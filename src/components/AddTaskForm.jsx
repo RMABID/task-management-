@@ -1,8 +1,25 @@
 const AddTaskForm = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const task_title = e.target.task_title.value;
+    const description = e.target.description.value;
+    const newTask = {
+      task_title,
+      description,
+    };
+    // try {
+    //   await 
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  };
   return (
     <div>
       <h1 className="text-3xl text-center">Your Task</h1>
-      <form className="grid grid-cols-1 font-Garamond md:grid-cols-2 font-raleway-font px-4 md:px-36 mt-8  gap-6">
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 font-Garamond md:grid-cols-2 font-raleway-font px-4 md:px-36 mt-8  gap-6"
+      >
         <div>
           <label className="block text-lg font-medium mb-2">
             Product Name :
@@ -10,7 +27,7 @@ const AddTaskForm = () => {
           <input
             required
             type="text"
-            name="product_name"
+            name="task_title"
             placeholder="Enter your product name"
             className="input input-bordered w-full"
           />
@@ -26,6 +43,9 @@ const AddTaskForm = () => {
             className="w-full  mt-1 p-2 border rounded-md focus:ring focus:ring-blue-300"
           />
         </div>
+        <button type="submit" className="btn ">
+          Submit
+        </button>
       </form>
     </div>
   );
