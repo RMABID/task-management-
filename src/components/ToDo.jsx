@@ -1,16 +1,17 @@
 import useCategory from "../hooks/useCategory";
+import TaskCard from "./TaskCard";
 
 const ToDo = () => {
-  const [category] = useCategory();
+  const [category, refetch] = useCategory();
 
   return (
-    <div>
+    <div className="flex flex-col items-start my-4">
       <h3>To-Do</h3>
-      <div>
+      <div className="grid grid-cols-1 items-center gap-4">
         {category
           ?.filter((item) => item.category === "To-Do")
-          ?.map((item) => (
-            <div>Hi</div>
+          ?.map((item, index) => (
+            <TaskCard refetch={refetch} key={index} item={item} />
           ))}
       </div>
     </div>

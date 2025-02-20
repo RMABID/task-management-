@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className="w-10/12 mx-auto">
       <AddTaskForm />
-      <section className="flex w-8/12 mx-auto justify-between items-center gap-8 my-24">
+      <section className="md:flex  mx-auto justify-between items-center gap-8 my-24">
         <ToDo />
         <InProgress />
         <Done />
