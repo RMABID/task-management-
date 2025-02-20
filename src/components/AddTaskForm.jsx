@@ -1,4 +1,7 @@
+import useAxiosPublice from "../hooks/useAxiosPublice";
+
 const AddTaskForm = () => {
+  const axiosPublice = useAxiosPublice();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const task_title = e.target.task_title.value;
@@ -7,11 +10,11 @@ const AddTaskForm = () => {
       task_title,
       description,
     };
-    // try {
-    //   await 
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      await axiosPublice.post("/task", newTask);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div>
