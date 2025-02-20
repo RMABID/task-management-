@@ -1,9 +1,14 @@
+import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 import useAxiosPublice from "../hooks/useAxiosPublice";
 
 const AddTaskForm = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const axiosPublice = useAxiosPublice();
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const task_title = e.target.task_title.value;
     const description = e.target.description.value;
     const category = e.target.category.value;
@@ -13,6 +18,11 @@ const AddTaskForm = () => {
       description,
       category,
     };
+
+    if (!user?.email) {
+      return navigate("/login");
+    }
+
     try {
       await axiosPublice.post("/task", newTask);
     } catch (error) {
