@@ -26,7 +26,6 @@ const AuthProvider = ({ children }) => {
       photoURL: photo,
     });
   };
-
   const signIn = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
@@ -42,7 +41,6 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const subscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      //user create in database
     });
 
     return () => {

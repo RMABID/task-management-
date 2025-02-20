@@ -6,9 +6,12 @@ const AddTaskForm = () => {
     e.preventDefault();
     const task_title = e.target.task_title.value;
     const description = e.target.description.value;
+    const category = e.target.category.value;
+
     const newTask = {
       task_title,
       description,
+      category,
     };
     try {
       await axiosPublice.post("/task", newTask);
@@ -24,9 +27,7 @@ const AddTaskForm = () => {
         className="grid grid-cols-1 font-Garamond md:grid-cols-2 font-raleway-font px-4 md:px-36 mt-8  gap-6"
       >
         <div>
-          <label className="block text-lg font-medium mb-2">
-            Product Name :
-          </label>
+          <label className="block text-lg font-medium mb-2">Task Title :</label>
           <input
             required
             type="text"
@@ -34,6 +35,17 @@ const AddTaskForm = () => {
             placeholder="Enter your product name"
             className="input input-bordered w-full"
           />
+        </div>
+        <div>
+          <label className="block text-lg font-medium mb-2">
+            Task Process :
+          </label>
+          <select name="category" defaultValue="default" className="select">
+            <option value={"default"}>Select Process</option>
+            <option>To-Do</option>
+            <option>In Progress</option>
+            <option>Done</option>
+          </select>
         </div>
         <div className="md:col-span-2">
           <label className="block text-lg font-medium text-gray-700">
