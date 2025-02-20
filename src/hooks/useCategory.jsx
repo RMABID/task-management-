@@ -4,16 +4,17 @@ import useAxiosPublice from "./useAxiosPublice";
 const useCategory = () => {
   const axiosPublice = useAxiosPublice();
   const {
-    data: category,
+    data: category = [],
     refetch,
     isLoading,
   } = useQuery({
-    queryFn: ["category"],
-    queryKey: async () => {
-      const data = await axiosPublice("/all-task");
+    queryKey: ["all-task"],
+    queryFn: async () => {
+      const { data } = await axiosPublice.get("/all-task");
       return data;
     },
   });
+
   return [category, refetch, isLoading];
 };
 

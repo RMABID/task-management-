@@ -1,9 +1,20 @@
-
+import useCategory from "../hooks/useCategory";
 
 const ToDo = () => {
-  return (
-    <div>ToDo</div>
-  )
-}
+  const [category] = useCategory();
 
-export default ToDo
+  return (
+    <div>
+      <h3>To-Do</h3>
+      <div>
+        {category
+          ?.filter((item) => item.category === "To-Do")
+          ?.map((item) => (
+            <div>Hi</div>
+          ))}
+      </div>
+    </div>
+  );
+};
+
+export default ToDo;

@@ -1,9 +1,20 @@
-
+import useCategory from "../hooks/useCategory";
 
 const InProgress = () => {
-  return (
-    <div>InProgress</div>
-  )
-}
+  const [category] = useCategory();
 
-export default InProgress
+  return (
+    <div>
+      <h3>In Progress</h3>
+      <div>
+        {category
+          ?.filter((item) => item.category === "In Progress")
+          ?.map((item) => (
+            <div>Hi</div>
+          ))}
+      </div>
+    </div>
+  );
+};
+
+export default InProgress;
