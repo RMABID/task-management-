@@ -6,7 +6,7 @@ const Done = () => {
 
   return (
     <div className="flex flex-col items-start my-4">
-      <h3>In Progress</h3>
+      <h3>Done</h3>
       <div className="grid grid-cols-1 items-center gap-4">
         {category
           ?.filter((item) => item.category === "Done")
